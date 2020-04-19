@@ -16,7 +16,7 @@ const (
 	DEFAULT_MESSAGE_ASUSER           = false
 	DEFAULT_MESSAGE_PARSE            = ""
 	DEFAULT_MESSAGE_THREAD_TIMESTAMP = ""
-	DEFAULT_MESSAGE_LINK_NAMES       = 0
+	DEFAULT_MESSAGE_LINK_NAMES       = false
 	DEFAULT_MESSAGE_UNFURL_LINKS     = false
 	DEFAULT_MESSAGE_UNFURL_MEDIA     = true
 	DEFAULT_MESSAGE_ICON_URL         = ""
@@ -51,7 +51,7 @@ type PostMessageParameters struct {
 	Parse           string `json:"parse"`
 	ThreadTimestamp string `json:"thread_ts"`
 	ReplyBroadcast  bool   `json:"reply_broadcast"`
-	LinkNames       int    `json:"link_names"`
+	LinkNames       bool   `json:"link_names"`
 	UnfurlLinks     bool   `json:"unfurl_links"`
 	UnfurlMedia     bool   `json:"unfurl_media"`
 	IconURL         string `json:"icon_url"`
@@ -631,7 +631,7 @@ func MsgOptionPostMessageParameters(params PostMessageParameters) MsgOption {
 			config.values.Set("parse", params.Parse)
 		}
 		if params.LinkNames != DEFAULT_MESSAGE_LINK_NAMES {
-			config.values.Set("link_names", "1")
+			config.values.Set("link_names", "true")
 		}
 
 		if params.UnfurlLinks != DEFAULT_MESSAGE_UNFURL_LINKS {
